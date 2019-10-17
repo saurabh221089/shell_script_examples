@@ -32,8 +32,8 @@ On_Cyan='\033[46m'        # Cyan
 On_White='\033[47m'       # White
 
 
-temp=`/opt/vc/bin/vcgencmd measure_temp`
-rev=`cat /proc/device-tree/model`
+temp=`/opt/vc/bin/vcgencmd measure_temp 2> /dev/null`
+rev=`cat /proc/device-tree/model 2> /dev/null`
 kernel=`uname -r`
 uptime=`uptime -p`
 df=`df /dev/sda* -h`
