@@ -43,6 +43,8 @@ os_name=`hostnamectl | grep Operating | cut -d: -f2`
 os_release=`hostnamectl | grep Operating | cut -d: -f2`
 cpu_name=`lscpu | grep "Model name" | cut -d: -f2`
 arch=`hostnamectl | grep Architecture | cut -d: -f2`
+ip=`ifconfig | grep -A 1 -E 'ens33|eth0' | tail -1 | cut -d ' ' -f 10`
+publicip=`curl ifconfig.me 2> /dev/null` 
 
 if [ -z "$temp" ]
 then
@@ -58,18 +60,19 @@ else
     echo -e "${BBlue}Rpi revision: $rev ${NC}" 
 fi
 
-echo -e "${BGreen}Shell: ${NC} $SHELL"
-echo -e "${BGreen}User: ${NC} $USER"
-echo -e "${BCyan}Uptime: ${NC} $uptime"
-echo -e "${Green}Disk free / total: \n $df ${NC}" 
-echo -e "${BYellow}Memory used / total (MB): $mem_used / $mem_total ${NC}"
-echo -e "${BBlue}OS name: $os_name ${NC}"
-echo -e "${BBlue}OS version: $os_release ${NC}"
-echo -e "${BBlue}Kernel version: $kernel ${NC}" #hostnamectl
-echo -e "${BCyan}Architecture: $arch ${NC}"
-echo -e "${BCyan}Cpu name: $cpu_name ${NC}"
+echo -e "${BCyan}Shell: ${BYellow} $SHELL"
+echo -e "${BCyan}User: ${BYellow} $USER"
+echo -e "${BCyan}IP address: ${BYellow} $ip"
+echo -e "${BCyan}Public IP : ${BYellow} $publicip"
+echo -e "${BCyan}Uptime: ${BYellow} $uptime"
+echo -e "${BCyan}Disk free / total: \n ${BYellow} $df" 
+echo -e "${BCyan}Memory used / total (MB): ${BYellow} $mem_used / $mem_total"
+echo -e "${BCyan}OS name: ${BYellow} $os_name"
+echo -e "${BCyan}OS version: ${BYellow} $os_release"
+echo -e "${BCyan}Kernel version: ${BYellow} $kernel" #hostnamectl
+echo -e "${BCyan}Architecture: ${BYellow} $arch"
+echo -e "${BCyan}Cpu name: ${BYellow} $cpu_name ${NC}"
 
-#Ip address: ifconfig
 #Cpu usage: top
 
 #Hostname / OS name / version / Arch: "cat /etc/os-release" + "lsb_release -a" + hostnamectl
