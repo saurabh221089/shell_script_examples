@@ -12,17 +12,17 @@ To view or edit root user cron jobs just add sudo in front of the command.
 ## Getting Started
 
 Below instructions will help you in creating your first cron job and schedule it according to your need.
-
- ┌───────────── minute (0 - 59)
- │ ┌───────────── hour (0 - 23)
- │ │ ┌───────────── day of the month (1 - 31)
- │ │ │ ┌───────────── month (1 - 12)
- │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;
- │ │ │ │ │                                   7 is also Sunday on some systems)
- │ │ │ │ │
- │ │ │ │ │
+```
+ |----------- minute (0 - 59)
+ | |------------ hour (0 - 23)
+ | | |------------ day of the month (1 - 31)
+ | | | |--------------- month (1 - 12)
+ | | | | |--------------- day of the week (0 - 6) (Sunday to Saturday;
+ | | | | |                                   7 is also Sunday on some systems)
+ | | | | |
+ | | | | |
  * * * * * [user] [command]
-
+```
 
 **every minute**
 
